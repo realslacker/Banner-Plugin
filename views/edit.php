@@ -11,13 +11,13 @@
 if (!defined('IN_CMS')) { exit(); }
 
 ?>
-<h1><?=isset($id) ? __('Edit Banner') . " #{$id}: {$name} ({$width}x{$height})" : __('New Banner');?></h1>
-<form method="post" enctype="multipart/form-data" action="<?=isset($id) ? get_url('plugin/banner/banner_update/'.$id) : get_url('plugin/banner/banner_new'); ?>">
+<h1><?php echo isset($id) ? __('Edit Banner') . " #{$id}: {$name} ({$width}x{$height})" : __('New Banner');?></h1>
+<form method="post" enctype="multipart/form-data" action="<?php echo isset($id) ? get_url('plugin/banner/banner_update/'.$id) : get_url('plugin/banner/banner_new'); ?>">
 	<fieldset style="padding: 0.5em;">
 		<legend style="padding: 0em 0.5em 0em 0.5em; font-weight: bold;"><?php echo __('Banner Image'); ?></legend>
-		<? if (isset($id)) : ?>
-		<img src="<?=URI_PUBLIC.Plugin::getSetting('imguri','banner').'/'.$image;?>" alt="<?=$alttext;?>" width="<?=$width;?>" height="<?=$height;?>" /><br />
-		<? else : ?>
+		<?php if (isset($id)) : ?>
+		<img src="<?php echo URI_PUBLIC.Plugin::getSetting('imguri','banner').'/'.$image;?>" alt="<?php echo $alttext;?>" width="<?php echo $width;?>" height="<?php echo $height;?>" /><br />
+		<?php else : ?>
 		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 			<tr>
 				<td class="label"><label for="banner"><?php echo __('Banner Image:');?> </label></td>
@@ -25,7 +25,7 @@ if (!defined('IN_CMS')) { exit(); }
 				<td class="help"><?php echo __('Only jpg, png and gif files are accepted'); ?></td>
 			</tr>
 		</table>
-		<? endif; ?>
+		<?php endif; ?>
 	</fieldset>
 	<br />
 	<fieldset style="padding: 0.5em;">
@@ -33,42 +33,42 @@ if (!defined('IN_CMS')) { exit(); }
 		<table class="fieldset" cellpadding="0" cellspacing="0" border="0">
 			<tr>
 				<td class="label"><label for="name"><?php echo __('Name:');?> </label></td>
-				<td class="field"><input name="name" id="name" type="text" size="35" maxsize="255" value="<?=isset($name) ? $name : '';?>"/></td>
+				<td class="field"><input name="name" id="name" type="text" size="35" maxsize="255" value="<?php echo isset($name) ? $name : '';?>"/></td>
 				<td class="help"><?php echo __('The banner name; be descriptive'); ?></td>
 			</tr>
 			<tr>
 				<td class="label"><label for="url"><?php echo __('Destination URL:');?> </label></td>
-				<td class="field"><input name="url" id="url" type="text" size="35" maxsize="255" value="<?=isset($url) ? $url : '';?>"/></td>
+				<td class="field"><input name="url" id="url" type="text" size="35" maxsize="255" value="<?php echo isset($url) ? $url : '';?>"/></td>
 				<td class="help"><?php echo __('URL of the website to go to when the banner is clicked'); ?></td>
 			</tr>
 			<tr>
 				<td class="label"><label for="alttext"><?php echo __('Alt Text:');?> </label></td>
-				<td class="field"><input name="alttext" id="alttext" type="text" size="35" maxsize="255" value="<?=isset($alttext) ? $alttext : '';?>"/></td>
+				<td class="field"><input name="alttext" id="alttext" type="text" size="35" maxsize="255" value="<?php echo isset($alttext) ? $alttext : '';?>"/></td>
 				<td class="help"><?php echo __('Alternative Text - helps with searchability'); ?></td>
 			</tr>
 			<tr>
 				<td class="label"><label for="target"><?php echo __('Link Target:');?> </label></td>
-				<td class="field"><input name="target" id="target" type="text" size="35" maxsize="255" value="<?=isset($target) ? $target : '';?>"/></td>
+				<td class="field"><input name="target" id="target" type="text" size="35" maxsize="255" value="<?php echo isset($target) ? $target : '';?>"/></td>
 				<td class="help"><?php echo __('Link Target - use _blank for new window'); ?></td>
 			</tr>
 			<tr>
 				<td class="label"><label for="width"><?php echo __('Width:');?> </label></td>
-				<td class="field"><input name="width" id="width" type="text" size="35" maxsize="255" value="<?=isset($width) ? $width : '';?>"/></td>
+				<td class="field"><input name="width" id="width" type="text" size="35" maxsize="255" value="<?php echo isset($width) ? $width : '';?>"/></td>
 				<td class="help"><?php echo __('Width in pixels'); ?></td>
 			</tr>
 			<tr>
 				<td class="label"><label for="height"><?php echo __('Height:');?> </label></td>
-				<td class="field"><input name="height" id="height" type="text" size="35" maxsize="255" value="<?=isset($height) ? $height : '';?>"/></td>
+				<td class="field"><input name="height" id="height" type="text" size="35" maxsize="255" value="<?php echo isset($height) ? $height : '';?>"/></td>
 				<td class="help"><?php echo __('Height in pixels'); ?></td>
 			</tr>
 			<tr>
 				<td class="label"><label for="expires"><?php echo __('Expires Date:');?> </label></td>
-				<td class="field"><input name="expires" id="expires" type="text" size="35" maxsize="255" value="<?=isset($expires) ? $expires : '';?>"/></td>
+				<td class="field"><input name="expires" id="expires" type="text" size="35" maxsize="255" value="<?php echo isset($expires) ? $expires : '';?>"/></td>
 				<td class="help"><?php echo __('Use MM/DD/YYYY format'); ?></td>
 			</tr>
 			<tr>
 				<td class="label"><label for="active"><?php echo __('Active:');?> </label></td>
-				<td class="field"><input name="active" id="active" type="checkbox" value="1" <?=$active ? 'checked="checked"' : '';?> /></td>
+				<td class="field"><input name="active" id="active" type="checkbox" value="1" <?php echo $active ? 'checked="checked"' : '';?> /></td>
 				<td class="help"><?php echo __('Is the banner active?'); ?></td>
 			</tr>
 		</table>
@@ -77,7 +77,7 @@ if (!defined('IN_CMS')) { exit(); }
 		<input class="button" name="commit" type="submit" accesskey="s" value="<?php echo __('Save');?>" />
 	</p>
 </form>
-<script type="text/javascript" src="<?=PLUGINS_URI;?>/banner/js/jquery.maskedinput-1.2.2.min.js"></script>
+<script type="text/javascript" src="<?php echo PLUGINS_URI;?>/banner/js/jquery.maskedinput-1.2.2.min.js"></script>
 <script type="text/javascript">
 // <![CDATA[
     function setConfirmUnload(on, msg) {
